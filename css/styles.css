@@ -1,4 +1,28 @@
+html, body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
 html {
     background: url('../img/bp.jpg') no-repeat center center fixed;
     background-size: 100% 100%;
+}
+
+div {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 500px;
+}
+
+div:not(:nth-child(1)) {
+    box-shadow: -3px 20px 30px 10px #333;
+
+}
+
+span {
+    font-size: 4em;
+    font-family: sans-serif;
+    color: white;
+    margin: auto;
 }
