@@ -1,23 +1,30 @@
 (function() {
 	var pTags = document.getElementsByTagName("p");
-	var ctrl = new ScrollMagic.Controller({globalSceneOptions: {}});
+	var ctrl = new ScrollMagic.Controller();
+	var enterTrigger = .75,
+	    exitTrigger = .1,
+	    enterDuration = 200,
+	    exitDuration = 100;
 
-	for(var i=0; i<pTags.length; i++) {
-	    var fadein_tween = TweenMax.to('p', .375,{ opacity: 1 });
-        var fadeout_tween = TweenMax.to('p', .375,{ opacity: 0 });
-
+	for(let i=0; i<pTags.length; i++) {
 	    new ScrollMagic.Scene({
-          triggerElement: pTags[i],
-          reverse: true
+            triggerHook: enterTrigger,
+            duration: enterDuration,
+            triggerElement: pTags[i],
+            reverse: true
         })
-        .setTween(fadein_tween)
-        .addTo(controller);
+        .setTween(pTags[i], { opacity: 1 })
+        .addIndicators()
+        .addTo(ctrl);
 	    
 		new ScrollMagic.Scene({
-          triggerElement: pTags[i],
-          reverse: true
+            triggerHook: exitTrigger,
+            duration: exitDuration,
+            triggerElement: pTags[i],
+            reverse: true
         })
-        .setTween(fadeout_tween)
-        .addTo(controller);
+        .setTween(pTags[i], { opacity: 0 })
+        .addIndicators()
+        .addTo(ctrl);
 	}
 }) ();

@@ -19,6 +19,10 @@ video {
 }
 
 p {
-    margin: 10vh auto;
+    margin: 20px auto;
     width: 600px;
+    opacity: 0;
 }
+
+p:first-child { margin-top: 100vh }
+p:last-child { margin-bottom: 100vh }
